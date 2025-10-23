@@ -29,12 +29,20 @@ export const SelectableTextView: React.FC<SelectableTextViewProps> = ({
           viewTag: number;
           chosenOption: string;
           highlightedText: string;
+          startIndex: number;
+          endIndex: number;
         }) => {
           const viewTag = findNodeHandle(viewRef.current);
           if (viewTag === eventData.viewTag) {
+            console.log(
+              'SelectableTextView - EventEmitter event received:',
+              eventData
+            );
             onSelection({
               chosenOption: eventData.chosenOption,
               highlightedText: eventData.highlightedText,
+              startIndex: eventData.startIndex,
+              endIndex: eventData.endIndex,
             });
           }
         }
